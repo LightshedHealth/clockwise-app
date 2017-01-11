@@ -1,0 +1,27 @@
+{
+  "name": "Clockwise.MD",
+  "version": "0.1.0",
+  "description": "Browser application for Clockwise.MD",
+  "main": "src/app.js",
+  "repository": "tbd",
+  "author": "the engineers of Clockwise",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "make": "DEBUG=electron-packager electron-packager . --all --out release --icon ./src/assets/icons/clockwise --electron-version 1.4.14"
+  },
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-preset-es2016-node5": "^1.1.2",
+    "babel-preset-react": "^6.16.0",
+    "electron-packager": "^8.4.0",
+    "electron-prebuilt-compile": "^1.4.14",
+    "eslint": "^3.13.1",
+    "eslint-plugin-react": "^6.9.0"
+  }
+}
