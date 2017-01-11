@@ -7,9 +7,15 @@ function setTrayMenu() {
 
   const contextMenu = Menu.buildFromTemplate([
     {
+      label: 'Open Window',
+      click(e) {
+        app.emit('openWindow');
+      }
+    },
+    {
       label: 'Preferences',
       click() {
-        console.log('Preferences clicked...');
+        app.emit('openPreferences');
       }
     }
   ]);
