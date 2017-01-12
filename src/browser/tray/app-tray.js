@@ -8,7 +8,7 @@ function setTrayMenu() {
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'Open Window',
-      click(e) {
+      click() {
         app.emit('openWindow');
       }
     },
@@ -25,4 +25,4 @@ function setTrayMenu() {
   return tray;
 }
 
-export default setTrayMenu
+export default setTrayMenu;
