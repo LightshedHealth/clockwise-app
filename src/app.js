@@ -16,12 +16,12 @@ app.on('ready', () => {
   let preferencesOpts = {
     width: 300,
     height: 300,
-    icon: `${__dirname}/assets/icons/clockwise_512x512.png`
+    icon: `${__dirname}/resources/logo.png`
   };
   let mainOpts = {
     width: 1024,
     height: 768,
-    icon: `${__dirname}/assets/icons/clockwise_512x512.png`
+    icon: `${__dirname}/resources/logo.png`
   };
   mainWindow = new BrowserWindow(mainOpts);
   mainWindow.on('close', (e) => {
