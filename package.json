@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "make": "DEBUG=electron-packager electron-packager . --all --out release --icon ./src/assets/icons/clockwise --electron-version 1.4.14"
+    "package": "which wine && DEBUG=electron-packager electron-packager . --all --out release --icon resources/logo --electron-version 1.4.14",
+    "clean": "npm cache clear && rm -rf node_modules && rm -rf release"
   },
   "dependencies": {
     "react": "^15.1.0",
