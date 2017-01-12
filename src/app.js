@@ -1,4 +1,4 @@
-import {app, BrowserWindow, crashReporter, Menu} from 'electron';
+import { app, BrowserWindow, crashReporter, Menu } from 'electron';
 import appMenu from './browser/menu/app-menu';
 import setTrayMenu from './browser/tray/app-tray';
 
@@ -16,35 +16,35 @@ app.on('ready', () => {
   let preferencesOpts = {
     width: 300,
     height: 300,
-    icon: 'assets/icons/clockwise_512x512.png'
-  }
+    icon: `${__dirname}/assets/icons/clockwise_512x512.png`
+  };
   let mainOpts = {
     width: 1024,
     height: 768,
-    icon: 'assets/icons/clockwise_512x512.png'
-  }
+    icon: `${__dirname}/assets/icons/clockwise_512x512.png`
+  };
   mainWindow = new BrowserWindow(mainOpts);
-  mainWindow.on('close', function(e) {
+  mainWindow.on('close', (e) => {
     e.preventDefault();
     mainWindow.hide();
   });
 
   preferencesWindow = new BrowserWindow(preferencesOpts);
-  preferencesWindow.on('close', function(e) {
+  preferencesWindow.on('close', (e) => {
     e.preventDefault();
     preferencesWindow.hide();
   });
 
-  mainWindow.hide()
-  preferencesWindow.hide()
+  mainWindow.hide();
+  preferencesWindow.hide();
 });
 
 app.on('openWindow', () => {
   mainWindow.loadURL(`file://${__dirname}/renderer/index.html`);
-  mainWindow.show()
+  mainWindow.show();
 });
 
 app.on('openPreferences', () => {
   preferencesWindow.loadURL(`file://${__dirname}/renderer/preferences.html`);
-  preferencesWindow.show()
+  preferencesWindow.show();
 });

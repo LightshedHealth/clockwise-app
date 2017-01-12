@@ -2,8 +2,8 @@ import React from 'react';
 
 export default class Preferences extends React.Component {
   constructor(props) {
-    super(props)
-    this.savePreferences = this.savePreferences.bind(this)
+    super(props);
+    this.savePreferences = this.savePreferences.bind(this);
   }
 
   savePreferences() {
