@@ -2,4 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './components/main';
 
-ReactDOM.render(<Main />, document.getElementById('app'));
+let facilityId = JSON.parse(localStorage.getItem('preferences')).facilityId
+ReactDOM.render(
+  <Main facilityId={ facilityId } />,
+  document.getElementById('app')
+);
