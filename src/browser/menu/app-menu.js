@@ -119,6 +119,11 @@ if (process.platform == 'darwin') {
         role: 'hideothers'
       },
       {
+        label: 'Preferences',
+        accelerator: 'Command+,',
+        click: function() { app.emit('openPreferences'); }
+      },
+      {
         label: 'Show All',
         role: 'unhide'
       },

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ipcRenderer } from 'electron';
 
 export default class Preferences extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ export default class Preferences extends React.Component {
     })
 
     localStorage.setItem('preferences', preferencesData);
+    ipcRenderer.send('showTrayIcon', this.state.showTrayIcon)
 
     this.setState((prevState, props) => ({
       initialFacilityId: prevState.facilityId,
