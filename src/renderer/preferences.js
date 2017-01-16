@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Preferences from './components/preferences';
 
-let preferences = JSON.parse(localStorage.getItem('preferences') || '{}')
+let defaultPreferences = JSON.stringify({ showTrayIcon: true });
+let preferences = JSON.parse(localStorage.getItem('preferences') || defaultPreferences);
 
 ReactDOM.render(
   <Preferences

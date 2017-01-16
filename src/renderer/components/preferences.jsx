@@ -1,4 +1,5 @@
 import React from 'react';
+import { ipcRenderer } from 'electron';
 
 export default class Preferences extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class Preferences extends React.Component {
       initialFacilityId: props.facilityId,
       initialShowTrayIcon: props.showTrayIcon,
       facilityId: props.facilityId,
-      showTrayIcon: props.showTrayIcon,
+      showTrayIcon: props.showTrayIcon
     };
   }
 
@@ -33,9 +34,11 @@ export default class Preferences extends React.Component {
       initialFacilityId: prevState.facilityId,
       facilityId: prevState.facilityId,
       initialShowTrayIcon: prevState.showTrayIcon,
-      showTrayIcon: prevState.showTrayIcon,
-      active: ''
+      showTrayIcon: prevState.showTrayIcon
     }));
+
+    ipcRenderer.send('showTrayIcon', this.state.showTrayIcon);
+    ipcRenderer.send('hidePreferences');
   }
 
   updateFacilityId(event) {

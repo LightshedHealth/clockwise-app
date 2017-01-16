@@ -75,7 +75,7 @@ let template = [
           if (focusedWindow)
             focusedWindow.toggleDevTools();
         }
-      },
+      }
     ]
   },
   {
@@ -91,7 +91,7 @@ let template = [
         label: 'Close',
         accelerator: 'CmdOrCtrl+W',
         role: 'close'
-      },
+      }
     ]
   }
 ];
@@ -119,6 +119,11 @@ if (process.platform == 'darwin') {
         role: 'hideothers'
       },
       {
+        label: 'Preferences',
+        accelerator: 'Command+,',
+        click: function() { app.emit('openPreferences'); }
+      },
+      {
         label: 'Show All',
         role: 'unhide'
       },
@@ -128,8 +133,8 @@ if (process.platform == 'darwin') {
       {
         label: 'Quit',
         accelerator: 'Command+Q',
-        click: function() { app.exit(0); }
-      },
+        click: function() { app.quit(); }
+      }
     ]
   });
 }

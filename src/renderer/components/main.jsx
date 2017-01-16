@@ -1,21 +1,12 @@
 import React from 'react';
-import {shell} from 'electron';
 
 export default class Main extends React.Component {
   constructor(props) {
-    super(props)
-  }
-
-  state = {
-    message: 'Hello, Electron'
-  }
-
-  openGithub() {
-    shell.openExternal('https://www.clockwisemd.com');
+    super(props);
   }
 
   render() {
-    let clockwiseUrl = `https://www.clockwisemd.com/hospitals/${this.props.facilityId}`
+    let clockwiseUrl = `https://www.clockwisemd.com/hospitals/${this.props.facilityId}`;
 
     return (
       <div className="container">
@@ -24,6 +15,3 @@ export default class Main extends React.Component {
     );
   }
 }
-
-
-// Provided by <a href="#" onClick={this.openGithub.bind(this)}>me<span className="glyphicon glyphicon-heart"></span></a>;
