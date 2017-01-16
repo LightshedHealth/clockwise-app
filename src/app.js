@@ -6,6 +6,7 @@ let mainWindow = null;
 let preferencesWindow = null;
 let preferencesReader = null;
 let tray = null;
+let preferences = {};
 
 if (process.env.NODE_ENV === 'develop') {
   crashReporter.start();
@@ -13,20 +14,27 @@ if (process.env.NODE_ENV === 'develop') {
 
 app.on('ready', () => {
   Menu.setApplicationMenu(appMenu);
+
   let preferencesOpts = {
     width: 300,
     height: 300,
     icon: `${__dirname}/resources/logo.png`
   };
+
   let mainOpts = {
     width: 1024,
     height: 768,
     icon: `${__dirname}/resources/logo.png`
   };
+
   mainWindow = new BrowserWindow(mainOpts);
   mainWindow.on('close', (e) => {
-    e.preventDefault();
-    mainWindow.hide();
+    if (preferences.showTrayIcon) {
+      e.preventDefault();
+      mainWindow.hide();
+    } else {
+      app.quit();
+    }
   });
   mainWindow.hide();
 
@@ -59,10 +67,25 @@ app.on('showTrayIcon', (showTrayIcon) => {
     tray.destroy();
     tray = null;
   }
+  preferences.showTrayIcon = showTrayIcon;
 });
+
+app.on('before-quit', () => {
+  preferencesWindow.destroy();
+  mainWindow.destroy();
+  readPreferences.destroy();
+  if (tray != null) {
+    tray.destroy();
+    tray = null;
+  }
+})
 
 ipcMain.on('showTrayIcon', (e, showTrayIcon) => {
   app.emit('showTrayIcon', showTrayIcon);
+});
+
+ipcMain.on('hidePreferences', (e) => {
+  preferencesWindow.hide();
 });
 
 ipcMain.on('readPreferences', (e, preferences) => {

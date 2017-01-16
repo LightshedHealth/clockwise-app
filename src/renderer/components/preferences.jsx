@@ -13,7 +13,7 @@ export default class Preferences extends React.Component {
       initialFacilityId: props.facilityId,
       initialShowTrayIcon: props.showTrayIcon,
       facilityId: props.facilityId,
-      showTrayIcon: props.showTrayIcon,
+      showTrayIcon: props.showTrayIcon
     };
   }
 
@@ -29,15 +29,16 @@ export default class Preferences extends React.Component {
     })
 
     localStorage.setItem('preferences', preferencesData);
-    ipcRenderer.send('showTrayIcon', this.state.showTrayIcon)
 
     this.setState((prevState, props) => ({
       initialFacilityId: prevState.facilityId,
       facilityId: prevState.facilityId,
       initialShowTrayIcon: prevState.showTrayIcon,
-      showTrayIcon: prevState.showTrayIcon,
-      active: ''
+      showTrayIcon: prevState.showTrayIcon
     }));
+
+    ipcRenderer.send('showTrayIcon', this.state.showTrayIcon);
+    ipcRenderer.send('hidePreferences');
   }
 
   updateFacilityId(event) {
