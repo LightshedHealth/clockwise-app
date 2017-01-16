@@ -73,7 +73,8 @@ app.on('showTrayIcon', (showTrayIcon) => {
 app.on('before-quit', () => {
   preferencesWindow.destroy();
   mainWindow.destroy();
-  preferencesReader.destroy();
+  preferencesReader.close();
+
   if (tray != null) {
     tray.destroy();
     tray = null;
