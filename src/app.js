@@ -86,6 +86,9 @@ ipcMain.on('showTrayIcon', (e, showTrayIcon) => {
 
 ipcMain.on('hidePreferences', (e) => {
   preferencesWindow.hide();
+  if (!mainWindow.isVisible()) {
+    app.emit('openWindow');
+  }
 });
 
 ipcMain.on('readPreferences', (e, preferences) => {
