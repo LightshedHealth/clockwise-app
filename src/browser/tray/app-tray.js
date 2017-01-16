@@ -8,15 +8,15 @@ function setTrayMenu() {
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'Open Window',
-      click() {
-        app.emit('openWindow');
-      }
+      click() { app.emit('openWindow'); }
     },
     {
       label: 'Preferences',
-      click() {
-        app.emit('openPreferences');
-      }
+      click() { app.emit('openPreferences'); }
+    },
+    {
+      label: 'Quit',
+      click: function() { app.quit(); }
     }
   ]);
 
