@@ -73,28 +73,28 @@ app.on('showTrayIcon', (showTrayIcon) => {
 app.on('before-quit', () => {
   preferencesWindow.destroy();
   mainWindow.destroy();
-  readPreferences.destroy();
+  preferencesReader.destroy();
   if (tray != null) {
     tray.destroy();
     tray = null;
   }
-})
+});
 
 ipcMain.on('showTrayIcon', (e, showTrayIcon) => {
   app.emit('showTrayIcon', showTrayIcon);
 });
 
-ipcMain.on('hidePreferences', (e) => {
+ipcMain.on('hidePreferences', () => {
   preferencesWindow.hide();
   if (!mainWindow.isVisible()) {
     app.emit('openWindow');
   }
 });
 
-ipcMain.on('readPreferences', (e, preferences) => {
-  app.emit('showTrayIcon', preferences.showTrayIcon);
+ipcMain.on('readPreferences', (e, prefs) => {
+  app.emit('showTrayIcon', prefs.showTrayIcon);
 
-  if (preferences.facilityId == '' || preferences.facilityId == undefined) {
+  if (prefs.facilityId == '' || prefs.facilityId == undefined) {
     app.emit('openPreferences');
   } else {
     app.emit('openWindow');
