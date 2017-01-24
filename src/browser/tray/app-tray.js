@@ -22,6 +22,7 @@ function setTrayMenu() {
 
   tray.setToolTip('ClockwiseMD');
   tray.setContextMenu(contextMenu);
+  tray.on('double-click', () => { app.emit('openWindow'); });
   return tray;
 }
 
