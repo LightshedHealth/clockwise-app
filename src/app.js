@@ -1,4 +1,7 @@
-import { app, BrowserWindow, crashReporter, Menu, ipcMain } from 'electron';
+import { app } from 'electron';
+if(require('electron-squirrel-startup')) app.quit();
+
+import { BrowserWindow, crashReporter, Menu, ipcMain } from 'electron';
 import appMenu from './browser/menu/app-menu';
 import setTrayMenu from './browser/tray/app-tray';
 
