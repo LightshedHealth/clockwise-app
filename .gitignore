@@ -2,6 +2,8 @@
 *.swp
 node_modules/
 bower_components/
+.eslintcache
 .serve/
 dist/
 release/
+
