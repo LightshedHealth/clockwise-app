@@ -8,10 +8,13 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "package": "which wine && DEBUG=electron-packager electron-packager . --all --out release --icon resources/logo --electron-version 1.4.14",
-    "clean": "npm cache clear && rm -rf node_modules && rm -rf release"
+    "package": "which wine && DEBUG=*,-babel,-electron-zip electron-packager-compile . --all --overwrite --out release --icon resources/logo --electron-version 1.4.14",
+    "clean": "npm cache clear && rm -rf release",
+    "nuke": "npm run-script clean && rm -rf node_modules",
+    "lint": "eslint --cache --ignore-path .gitignore src"
   },
   "dependencies": {
+    "electron-compile": "^5.1.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0"
   },
