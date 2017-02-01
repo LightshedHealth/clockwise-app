@@ -19,8 +19,10 @@ npm run-script package
 In Windows:
 
 ```bash
-# npm run-script installer
-set DEBUG=electron-windows-installer:main
-del dist\*
-node installer.js
+# for digitally signing the installer
+set CERTIFICATE_FILE=filename.p12 # or filename.pfx
+set CERTIFICATE_PASSWORD=password
+
+# to create the installer
+npm run-script installer
 ```

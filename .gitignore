@@ -6,4 +6,5 @@ bower_components/
 .serve/
 dist/
 release/
-
+*.p12
+*.pfx
