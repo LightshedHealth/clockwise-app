@@ -1,4 +1,7 @@
-import { app, BrowserWindow, crashReporter, Menu, ipcMain } from 'electron';
+import { app } from 'electron';
+if(require('electron-squirrel-startup')) app.quit();
+
+import { BrowserWindow, crashReporter, Menu, ipcMain } from 'electron';
 import appMenu from './browser/menu/app-menu';
 import setTrayMenu from './browser/tray/app-tray';
 
@@ -18,13 +21,15 @@ app.on('ready', () => {
   let preferencesOpts = {
     width: 300,
     height: 300,
-    icon: `${__dirname}/resources/logo.png`
+    icon: `${__dirname}/resources/logo.png`,
+    show: false
   };
 
   let mainOpts = {
     width: 1024,
     height: 768,
-    icon: `${__dirname}/resources/logo.png`
+    icon: `${__dirname}/resources/logo.png`,
+    show: false
   };
 
   mainWindow = new BrowserWindow(mainOpts);
@@ -36,17 +41,14 @@ app.on('ready', () => {
       app.quit();
     }
   });
-  mainWindow.hide();
 
   preferencesWindow = new BrowserWindow(preferencesOpts);
   preferencesWindow.on('close', (e) => {
     e.preventDefault();
     preferencesWindow.hide();
   });
-  preferencesWindow.hide();
 
   preferencesReader = new BrowserWindow(preferencesOpts);
-  preferencesReader.hide();
   preferencesReader.loadURL(`file://${__dirname}/renderer/reader.html`);
 });
 

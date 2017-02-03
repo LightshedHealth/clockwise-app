@@ -8,10 +8,15 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "package": "which wine && DEBUG=electron-packager electron-packager . --all --out release --icon resources/logo --electron-version 1.4.14",
-    "clean": "npm cache clear && rm -rf node_modules && rm -rf release"
+    "lint": "eslint --cache --ignore-path .gitignore src",
+    "clean": "npm cache clear && rm -rf release && rm -rf dist",
+    "package": "which wine && DEBUG=*,-babel,-electron-zip electron-packager-compile . --all --overwrite --out release --icon resources/logo --electron-version 1.4.14",
+    "installer": "del dist\\* /q & set debug=electron-windows-installer:main & node installer.js",
+    "nuke": "npm run-script clean && rm -rf node_modules"
   },
   "dependencies": {
+    "electron-compile": "^5.1.2",
+    "electron-squirrel-startup": "^1.0.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0"
   },
@@ -22,6 +27,7 @@
     "babel-preset-react": "^6.16.0",
     "electron-packager": "^8.4.0",
     "electron-prebuilt-compile": "^1.4.14",
+    "electron-winstaller": "^2.5.1",
     "eslint": "^3.13.1",
     "eslint-plugin-react": "^6.9.0"
   }
